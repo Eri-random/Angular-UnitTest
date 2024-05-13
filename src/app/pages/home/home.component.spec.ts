@@ -2,9 +2,9 @@ import { BookService } from "src/app/services/book.service";
 import { HomeComponent } from "./home.component";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, Pipe, PipeTransform } from "@angular/core";
 import { Book } from "src/app/models/book.model";
-import { of } from "rxjs";
+import { of, pipe } from "rxjs";
 
 const listBook:Book[]=[
     {
@@ -34,6 +34,13 @@ const bookServiceMock={
     getBooks : () => of(listBook),
 }
 
+@Pipe({name:'reduceText'})
+class ReduceTextPipeMock implements PipeTransform{
+    transform():string {
+        return '';
+    }
+}
+
 describe('Home component',() =>{
 
     let component: HomeComponent;
@@ -46,7 +53,8 @@ describe('Home component',() =>{
             HttpClientTestingModule
             ],
             declarations:[
-            HomeComponent
+            HomeComponent,
+            ReduceTextPipeMock
             ],
             providers:[
                 //BookService
