@@ -24,7 +24,7 @@ describe('Cart component',() =>{
                 CUSTOM_ELEMENTS_SCHEMA,
                 NO_ERRORS_SCHEMA
             ]
-        });
+        }).compileComponents();
     });
 
     //Instancia del componente
@@ -33,5 +33,10 @@ describe('Cart component',() =>{
         component = fixture.componentInstance;
         //OnInit
         fixture.detectChanges();
-    })
+    });
+
+    //Comprobar que el componente se creo correctamentes
+    it('should create',() =>{
+        expect(component).toBeTruthy();
+    });
 });
