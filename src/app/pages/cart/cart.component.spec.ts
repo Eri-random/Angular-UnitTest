@@ -53,6 +53,11 @@ describe('Cart component',() =>{
         }).compileComponents();
     });
 
+    // ngOnInit(): void {
+    //     this.listCartBook = this._bookService.getBooksFromCart();
+    //     this.totalPrice = this.getTotalPrice(this.listCartBook);
+    // }
+
     //Instancia del componente
     beforeEach(() =>{
         fixture = TestBed.createComponent(CartComponent);
@@ -60,6 +65,7 @@ describe('Cart component',() =>{
         //OnInit
         fixture.detectChanges();
         service = fixture.debugElement.injector.get(BookService);
+        spyOn(service,'getBooksFromCart').and.callFake(() => listBook);
     });
 
     //Comprobar que el componente se creo correctamentes
