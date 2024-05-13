@@ -140,4 +140,38 @@ describe('Cart component',() =>{
 
     });
 
+    // public onClearBooks(): void {
+    //     if (this.listCartBook && this.listCartBook.length > 0) {
+    //       this._clearListCartBook();
+    //     } else {
+    //        console.log("No books available");
+    //     }
+    //   }
+    
+    //   private _clearListCartBook() {
+    //     this.listCartBook = [];
+    //     this._bookService.removeBooksFromCart();
+    //   }
+
+    /*PRUEBA A METODO PRIVADO RECOMENDABLE*/
+    it('_onClearBooks works correctly',()=>{
+        const spy1 = spyOn((component as any),'_clearListCartBook').and.callThrough();
+        const spy2 = spyOn(service,'removeBooksFromCart').and.callFake(() => null);
+        component.listCartBook = listBook;
+        component.onClearBooks();
+        expect(component.listCartBook.length).toBe(0);
+        expect(spy1).toHaveBeenCalled();
+        expect(spy2).toHaveBeenCalled();
+    });
+
+    it('_clearListCartBook works correctly',()=>{
+        const spy2 = spyOn(service,'removeBooksFromCart').and.callFake(() => null);
+        component.listCartBook = listBook;
+        component['_clearListCartBook']();
+
+        expect(component.listCartBook.length).toBe(0);
+        expect(spy2).toHaveBeenCalled();
+
+    });
+
 });
