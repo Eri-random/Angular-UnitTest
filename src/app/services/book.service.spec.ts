@@ -137,4 +137,18 @@ describe('BookService',() =>{
         expect(listBook.length).toBe(1);
         expect(spy1).toHaveBeenCalled();
     });
+
+    // public removeBooksFromCart(): void {
+    //     localStorage.setItem('listCartBook', null);
+    //   }
+
+    it('removeBooksFromCart removes the list from localStorage',()=>{
+        service.addBookToCart(book);
+        let listBook = service.getBooksFromCart();
+        expect(listBook.length).toBe(1);
+
+        service.removeBooksFromCart();
+        listBook = service.getBooksFromCart();
+        expect(listBook.length).toBe(0);
+    })
 })
