@@ -79,6 +79,7 @@ describe('Home component',() =>{
 
     it('getBooks get books from the subscription', ()=>{
         //const spy1 = spyOn(service,'getBooks').and.returnValue(of(listBook))
+        //debugger;
         component.getBooks();
         //expect(spy1).toHaveBeenCalled();
         expect(component.listBook.length).toBe(3);
