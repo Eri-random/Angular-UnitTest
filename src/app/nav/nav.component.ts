@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
   }
 
   navTo(path:string):void{
-    this.router.navigate[`/${path}`]
+    this.router.navigate([`/${path}`]);
   }
 
 }
