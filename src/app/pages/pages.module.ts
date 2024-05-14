@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { NavModule } from '../nav/nav.module';
 import { ReduceTextPipe } from './reduce-text/reduce-text.pipe';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationDialogModule } from '../dialogs/confirmation-dialog/confirmation-dialog.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,8 @@ import { ReduceTextPipe } from './reduce-text/reduce-text.pipe';
     CommonModule,
     NavModule,
     PagesRoutingModule,
+    MatDialogModule,
+    ConfirmationDialogModule,
   ],
   declarations: [
     PagesComponent,
