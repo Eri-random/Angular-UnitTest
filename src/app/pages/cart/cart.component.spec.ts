@@ -4,7 +4,9 @@ import {HttpClientTestingModule} from "@angular/common/http/testing"
 import { BookService } from "src/app/services/book.service";
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
 import { Book } from "src/app/models/book.model";
-  
+import { MatDialog } from "@angular/material/dialog";
+import {of} from 'rxjs';
+
 const listBook:Book[]=[
     {
       name:'',
@@ -29,6 +31,14 @@ const listBook:Book[]=[
       }
 ]
 
+const MatDialogMock={
+    open(){
+        return {
+            afterClosed:() => of(true)
+        };
+    }
+};
+
 describe('Cart component',() =>{
 
     let component: CartComponent;
@@ -38,13 +48,16 @@ describe('Cart component',() =>{
     beforeEach(() =>{
         TestBed.configureTestingModule({
             imports:[
-            HttpClientTestingModule
+            HttpClientTestingModule,
             ],
             declarations:[
             CartComponent
             ],
             providers:[
-                BookService
+                BookService,
+                {
+                    provide:MatDialog,useValue:MatDialogMock
+                }
             ],
             schemas:[
                 CUSTOM_ELEMENTS_SCHEMA,
