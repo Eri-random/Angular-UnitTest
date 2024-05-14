@@ -35,19 +35,26 @@ describe('Confirm dialog component', () => {
         expect(component).toBeTruthy();
     });
 
-    it('onConfirm send true value', () => {
-        // const service = fixture.debugElement.injector.get(MatDialogRef);
+    // public onConfirm(): void {
+    //     this.dialogRef.close(true);
+    // }
+
+    // public onDismiss(): void {
+    //     this.dialogRef.close(false);
+    // }
+
+    it('onConfirm send true value',()=>{
+        //const service = fixture.debugElement.injector.get(MatDialogRef);
         const service = TestBed.inject(MatDialogRef);
-        const spy = spyOn(service, 'close');
+        const spy = spyOn(service,'close');
         component.onConfirm();
-        expect(spy).toHaveBeenCalledWith(true)
-    });
+        expect(spy).toHaveBeenCalledWith(true);
+    })
 
-    it('onDismiss send false value', () => {
+    it('onConfirm send false value',()=>{
         const service = TestBed.inject(MatDialogRef);
-        const spy = spyOn(service, 'close');
+        const spy = spyOn(service,'close');
         component.onDismiss();
-        expect(spy).toHaveBeenCalledWith(false)
-    });
-
+        expect(spy).toHaveBeenCalledWith(false);
+    })
 });
